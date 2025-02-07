@@ -82,6 +82,9 @@ name=input("Enter account name: ")
 initial_balance=int(input("Initial balance: "))
 
 account=BankAccount("Alice",123456,500000)
+#hint
+#choices
+#if choice == "yes":#
 
 deposit_amount=int(input("Enter deposit amount: "))
 account.deposit(deposit_amount)
