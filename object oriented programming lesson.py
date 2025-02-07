@@ -5,6 +5,7 @@
 #method-functions inside a class that defines behaviour
 #__init__: a construct that initializes an object
 #self-refers to current object instance
+# from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required
 
 
@@ -34,17 +35,64 @@ from django.contrib.auth.decorators import login_required
 # account.deposit(400000)
 # print(account.get_balance())
 #inheritance(code reusability)
-class Animal:
-    def __init__(self, name):
-        self.name=name
-    def make_sound(self):
-        print("Animal makes a sound")
-class Cow(Animal):
-    def make_sound(self):
-        print("Moows! Moows!")
-cow1=Cow("kerubo")
-cow1.make_sound()
+# class Animal:
+#     def __init__(self, name):
+#         self.name=name
+#     def make_sound(self):
+#         print("Animal makes a sound")
+# class Cow(Animal):
+#     def make_sound(self):
+#         print("Moows! Moows!")
+# cow1=Cow("kerubo")
+# cow1.make_sound()
 #polymorphism(multiple forms)
 #abstraction-hiding complexity
+
+# class Car:
+#     def __init__(self,brand,model,mileage,year):
+#         self.brand=brand
+#         self.model=model
+#         self.mileage=mileage
+#         self.year=year
+#     def display_info(self):
+#         print(f"{self.brand} \n{self.model} \n{self.mileage} \n{self.year}")
+# car1=Car("Toyota","corola",530,2021)
+# car2=Car("Mercedes","SUV",200,2023)
+# car1.display_info()
+# car2.display_info()
+
+class BankAccount:
+    def __init__(self,account_name,account_number,balance):
+        self.account_name=account_name
+        self.account_number=account_number
+        self.__balance=balance
+    def deposit(self,amount):
+        self.__balance+=amount
+        print(f"The {amount} has been deposited successfully. \n The new balance is: {self.__balance}")
+    def withdraw(self,amount):
+        if amount > self.__balance:
+            print("Insufficient balance! Please withdraw a lesser amount.")
+        else:
+            self.__balance-=amount
+            print(f"The {amount} has been withdrawn successfully. \n Remaining balance is: {self.__balance}")
+    def get_balance(self):
+        return self.__balance
+#user input
+name=input("Enter account name: ")
+initial_balance=int(input("Initial balance: "))
+
+account=BankAccount("Alice",123456,500000)
+
+deposit_amount=int(input("Enter deposit amount: "))
+account.deposit(deposit_amount)
+
+choice= input("Do you want to withdraw? (yes/no): ").strip().lower()
+if choice == "yes":
+    withdraw_amount=int(input(" Enter amount to withdraw: "))
+    account.withdraw(withdraw_amount)
+else:
+    print("Transaction completed successfully.")
+print(f"The final balance for {account.account_name}: {account.get_balance()}")
+
 
 
