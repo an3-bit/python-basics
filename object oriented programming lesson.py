@@ -60,42 +60,75 @@ from django.contrib.auth.decorators import login_required
 # car2=Car("Mercedes","SUV",200,2023)
 # car1.display_info()
 # car2.display_info()
+#
+# class BankAccount:
+#     def __init__(self,account_name,account_number,balance):
+#         self.account_name=account_name
+#         self.account_number=account_number
+#         self.__balance=balance
+#     def deposit(self,amount):
+#         self.__balance+=amount
+#         print(f"The {amount} has been deposited successfully. \n The new balance is: {self.__balance}")
+#     def withdraw(self,amount):
+#         if amount > self.__balance:
+#             print("Insufficient balance! Please withdraw a lesser amount.")
+#         else:
+#             self.__balance-=amount
+#             print(f"The {amount} has been withdrawn successfully. \n Remaining balance is: {self.__balance}")
+#     def get_balance(self):
+#         return self.__balance
+# #user input
+# name=input("Enter account name: ")
+# initial_balance=int(input("Initial balance: "))
+#
+# account=BankAccount("Alice",123456,500000)
+# #hint
+# #choices
+# #if choice == "yes":#
+#
+# deposit_amount=int(input("Enter deposit amount: "))
+# account.deposit(deposit_amount)
+#
+# choice= input("Do you want to withdraw? (yes/no): ").strip().lower()
+# if choice == "yes":
+#     withdraw_amount=int(input(" Enter amount to withdraw: "))
+#     account.withdraw(withdraw_amount)
+# else:
+#     print("Transaction completed successfully.")
+# print(f"The final balance for {account.account_name}: {account.get_balance()}")
+# Parent class
+class Person:
+    def __init__(self, name):
+        self.name = name
 
-class BankAccount:
-    def __init__(self,account_name,account_number,balance):
-        self.account_name=account_name
-        self.account_number=account_number
-        self.__balance=balance
-    def deposit(self,amount):
-        self.__balance+=amount
-        print(f"The {amount} has been deposited successfully. \n The new balance is: {self.__balance}")
-    def withdraw(self,amount):
-        if amount > self.__balance:
-            print("Insufficient balance! Please withdraw a lesser amount.")
-        else:
-            self.__balance-=amount
-            print(f"The {amount} has been withdrawn successfully. \n Remaining balance is: {self.__balance}")
-    def get_balance(self):
-        return self.__balance
-#user input
-name=input("Enter account name: ")
-initial_balance=int(input("Initial balance: "))
-
-account=BankAccount("Alice",123456,500000)
-#hint
-#choices
-#if choice == "yes":#
-
-deposit_amount=int(input("Enter deposit amount: "))
-account.deposit(deposit_amount)
-
-choice= input("Do you want to withdraw? (yes/no): ").strip().lower()
-if choice == "yes":
-    withdraw_amount=int(input(" Enter amount to withdraw: "))
-    account.withdraw(withdraw_amount)
-else:
-    print("Transaction completed successfully.")
-print(f"The final balance for {account.account_name}: {account.get_balance()}")
+    def info(self):
+        return f"Name: {self.name}"
 
 
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
+
+    def get_salary(self):
+        return f"Salary: {self.salary}"
+
+
+class Manager(Person, Employee):
+    def __init__(self, name, salary, department):
+        # Initialize attributes from parent classes
+        Person.__init__(self, name)
+        Employee.__init__(self, salary)
+        self.department = department
+
+    def get_department(self):
+        return f"Department: {self.department}"
+
+
+# Creating an instance of Manager
+manager = Manager("Peter", 75000, "HR")
+
+# Displaying manager information
+print(manager.info())
+print(manager.get_salary())
+print(manager.get_department())
 
