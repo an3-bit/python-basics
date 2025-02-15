@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ab.ale Fitness Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <a href="/" class="navbar__logo">Ab.ale Fitness Gym</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <!-- Menu Icon (Three Bars) -->
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <a href="/" class="navbar__link">Home</a>
+            <a href="/services.html" class="navbar__link">Services</a>
+            <a href="/plans.html" class="navbar__link">Plans</a>
+            <a href="/trainers.html" class="navbar__link">Trainers</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero__content">
+            <h1>Welcome to Ab.ale Fitness Gym</h1>
+            <p>Your journey to fitness begins here.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menulinks = document.querySelector('.navbar__menu');
+
+        //Display Mobile Menu
+        const mobileMenu = () => {
+            menu.classList.toggle('is-active');
+            menulinks.classList.toggle('active');
+        }
+
+        menu.addEventListener('click', mobileMenu);
+    </script>
+</body>
+</html>

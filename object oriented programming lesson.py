@@ -96,6 +96,7 @@ from django.contrib.auth.decorators import login_required
 # else:
 #     print("Transaction completed successfully.")
 # print(f"The final balance for {account.account_name}: {account.get_balance()}")
+#inheritance
 # Parent class
 class Person:
     def __init__(self, name):
